@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.appgrouplab.taskmanager.R;
+import com.appgrouplab.taskmanager.SelectList.presenter.AdapterSelectorList;
 import com.appgrouplab.taskmanager.SelectList.presenter.SelectListPrensenterImpl;
 import com.appgrouplab.taskmanager.SelectList.presenter.SelectListPresenter;
 

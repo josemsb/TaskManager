@@ -7,13 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.appgrouplab.taskmanager.Manager.presenter.AdapterTaskTerminate;
+import com.appgrouplab.taskmanager.Manager.presenter.AdapterTasks;
 import com.appgrouplab.taskmanager.R;
 import com.appgrouplab.taskmanager.Manager.presenter.ManagerPresenter;
 import com.appgrouplab.taskmanager.Manager.presenter.ManagerPresenterImpl;

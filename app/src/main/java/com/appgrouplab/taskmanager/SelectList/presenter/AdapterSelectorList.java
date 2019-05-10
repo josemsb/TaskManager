@@ -1,4 +1,4 @@
-package com.appgrouplab.taskmanager.SelectList.view;
+package com.appgrouplab.taskmanager.SelectList.presenter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
