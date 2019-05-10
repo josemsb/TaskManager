@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TaskManager</string>
+    <string name="task">Tareas</string>
+    <string name="selectList">Selecciona Lista</string>
+    <string name="cancel">CANCELAR</string>
+    <string name="delete">ELIMINAR</string>
+    <string name="edit">EDITAR</string>
+    <string name="description">Descripción</string>
+    <string name="title">Título</string>
+    <string name="titleTaskEdit">Detalle de tarea</string>
+    <string name="extract">No tienes tareas agregadas, empieza creando una.</string>
+    <string name="addList">Registra una lista</string>
+    <string name="save">GUARDAR</string>
+    <string name="registerTask">Registra una tarea</string>
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    style="@style/StyleActivity">
+
+    <LinearLayout
+        android:id="@+id/lvAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        style="@style/AppBarStyleSecondary">
+
+        <ImageButton
+            android:id="@+id/imgBackListSelector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:tint="#ffffff"
+            android:src="@drawable/left" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selectList"
+            android:layout_marginStart="10dp"
+            style="@style/TextAppBar"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lvAddList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_below="@id/lvAppbar"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground">
+
+
+        <ImageView
+            android:id="@+id/imgAddList"
+            android:src="@drawable/plus"
+            style="@style/ImageList"/>
+
+
+        <TextView
+            android:id="@+id/txtAddList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextListSelector"
+            android:text="Agrega una lista"/>
+
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/lvAddList"
+        android:layout_gravity="center_horizontal"/>
+
+</RelativeLayout>
