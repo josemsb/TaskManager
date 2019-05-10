@@ -6,7 +6,7 @@ hora seleccionada. Tambien se visualiza las tareas temrinadas y ordena por fecha
 > SQLite, MVP, Receiver, Material Desing y para el diseño de la interfaz se ha usado Adobe XD
 ## Funciones desarrolladas
 - Listas: Agrega y seleeciona listas
-- Tareas: Agrega, Elimina, Modifica (título y descripción) y Finzalizada; se puede agendar e ingresar hora para notificación de alarma.
+- Tareas: Agrega, Elimina, Modifica (título y descripción) y Finaliza; se puede agendar e ingresar hora para notificación de alarma.
 ## Capas 
 - View: Diseño de interfaz
 - Presenter: Adpatadores
