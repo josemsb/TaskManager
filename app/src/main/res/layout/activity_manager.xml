@@ -34,11 +34,20 @@
                 style="@style/TextAppBar"/>
 
             <CheckBox
-                android:id="@+id/chkSearch"
+                android:id="@+id/chkOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:button="@drawable/menu"
+                android:button="@drawable/date"
+                android:buttonTint="@drawable/check_selector_menu" />
+
+            <CheckBox
+                android:id="@+id/chkNatural"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:button="@drawable/natural"
+                android:layout_marginStart="10dp"
                 android:buttonTint="@drawable/check_selector_menu" />
 
 
@@ -106,9 +115,35 @@
         android:id="@+id/rvTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/AppBar"
         android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/lyFondo" />
+
+    <LinearLayout
+        android:id="@+id/lvTaskCompleted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/rvTask"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/txtTaskCompledd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tareas Completadas ()"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvTaskCompleted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/lvTaskCompleted" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fbAddTask"

@@ -25,10 +25,9 @@ public class ManagerInteractorImpl implements ManagerInteractor {
         taskInterface = new Task();
     }
 
+    /////////////////Functions List///////////////
     @Override
-    public void addList(String title, Integer state, Context context) {
-        listInterface.add( title,  state,  context);
-    }
+    public void addList(String title, Integer state, Context context) {listInterface.add( title,  state,  context);}
 
     @Override
     public int countList(Context context) {
@@ -46,20 +45,23 @@ public class ManagerInteractorImpl implements ManagerInteractor {
     }
 
 
+    ////////////////Functions Task///////////////////
     @Override
     public void addTask(Integer idList, String title, String description, String dateCreate, String dateRemider, Integer orderNumber, String hourRemider, Integer state, Context context) {
         taskInterface.add( idList,  title,  description,  dateCreate,  dateRemider,  orderNumber,  hourRemider,  state,  context);
     }
 
     @Override
-    public int countTask(Context context, String idList) {
-        return taskInterface.count(context,idList);
-    }
+    public int countTask(Context context, String idList) {return taskInterface.count(context,idList);}
 
     @Override
-    public ArrayList<TaskData> getListTask(Context context, String idList) {
-        return taskInterface.getList(context,idList);
-    }
+    public int countTaskTerminate(Context context, String idList) {return taskInterface.countTerminate(context,idList);}
+
+    @Override
+    public ArrayList<TaskData> getListTask(Context context, String idList,String order) {return taskInterface.getList(context,idList,order);}
+
+    @Override
+    public ArrayList<TaskData> getListTaskTerminate(Context context, String idList) {return taskInterface.getListTerminate(context,idList);}
 
     @Override
     public TaskData getTask(Context context, String id) {

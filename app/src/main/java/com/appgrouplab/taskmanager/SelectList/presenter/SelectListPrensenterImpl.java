@@ -22,14 +22,10 @@ public class SelectListPrensenterImpl implements  SelectListPresenter {
     }
 
     @Override
-    public ArrayList<ListData>   getList(Context context) {
-        return selectListInteractor.getList(context);
-    }
+    public ArrayList<ListData>   getList(Context context) {return selectListInteractor.getList(context);}
 
     @Override
-    public void addList(String title, Integer state, Context context) {
-        selectListInteractor.addList(title,state,context);
-    }
+    public void addList(String title, Integer state, Context context) { selectListInteractor.addList(title,state,context);}
 
 
 }

@@ -22,14 +22,9 @@ public class SelectListInteractorImpl implements SelectListInteractor {
     }
 
     @Override
-    public ArrayList<ListData>  getList(Context context) {
-       return listInterface.get(context);
-    }
+    public ArrayList<ListData>  getList(Context context) {return listInterface.get(context);}
 
     @Override
-    public void addList(String title, Integer state, Context context) {
-        listInterface.add(title,state,context);
-    }
-
+    public void addList(String title, Integer state, Context context) {listInterface.add(title,state,context);}
 
 }

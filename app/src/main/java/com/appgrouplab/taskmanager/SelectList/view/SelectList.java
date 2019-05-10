@@ -1,6 +1,5 @@
 package com.appgrouplab.taskmanager.SelectList.view;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -35,8 +34,19 @@ public class SelectList extends AppCompatActivity implements  SelectListView, Di
 
         selectListPresenter = new SelectListPrensenterImpl(this);
 
+        rvList.setHasFixedSize(true);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rvList.setLayoutManager(layoutManager);
+        mAdapter = new AdapterSelectorList(this);
+        rvList.setAdapter(mAdapter);
 
+        mAdapter.setDataset(selectListPresenter.getList(this));
 
+        eventClick();
+
+    }
+
+    private void eventClick() {
         imgBackListSelector.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -58,18 +68,6 @@ public class SelectList extends AppCompatActivity implements  SelectListView, Di
             }
         });
 
-
-
-
-        rvList.setHasFixedSize(true);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rvList.setLayoutManager(layoutManager);
-        mAdapter = new AdapterSelectorList(this);
-        rvList.setAdapter(mAdapter);
-
-        mAdapter.setDataset(selectListPresenter.getList(this));
-
-
         mAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,8 +81,6 @@ public class SelectList extends AppCompatActivity implements  SelectListView, Di
         });
 
     }
-
-
 
     @Override
     public void sendSave() {

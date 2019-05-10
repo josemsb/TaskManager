@@ -7,13 +7,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titleTaskEdit"
-            style="@style/TextTitleDialog"/>
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <ImageButton
+                android:id="@+id/ibCompleteTask"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/completed"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/ibDeleteTask"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trash"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+
 
         <EditText
             android:id="@+id/etTitleTaskEdit"
@@ -26,6 +45,7 @@
             android:id="@+id/etDescriptionTaskEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="12dp"
             android:hint="@string/description"
             android:inputType="text"/>
 
@@ -46,13 +66,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cancel"
-            style="@style/TextButtonDialog"/>
-
-        <TextView
-            android:id="@+id/txtDeleteTaskEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/delete"
             style="@style/TextButtonDialog"/>
 
 

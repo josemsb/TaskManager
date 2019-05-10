@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.appgrouplab.taskmanager.Manager.presenter.ManagerPresenter;
@@ -21,7 +22,8 @@ public class DialogTaskEdit extends DialogFragment implements ManagerActivityVie
 
 
     EditText etTitleTaskEdit,etDescriptionTaskEdit;
-    TextView txtCancelTasEdit, txtDeleteTaskEdit,txtEditTaskEdit;
+    ImageButton ibCompleteTask,ibDeleteTask;
+    TextView txtCancelTasEdit,txtEditTaskEdit;
     ManagerPresenter managerPresenter;
     public Integer id;
 
@@ -36,11 +38,14 @@ public class DialogTaskEdit extends DialogFragment implements ManagerActivityVie
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_task_edit,container,false);
 
+        getDialog().setTitle(R.string.titleTaskEdit);
+
         etTitleTaskEdit = view.findViewById(R.id.etTitleTaskEdit);
         etDescriptionTaskEdit = view.findViewById(R.id.etDescriptionTaskEdit);
         txtCancelTasEdit = view.findViewById(R.id.txtCancelTasEdit);
-        txtDeleteTaskEdit = view.findViewById(R.id.txtDeleteTaskEdit);
         txtEditTaskEdit = view.findViewById(R.id.txtEditTaskEdit);
+        ibDeleteTask = view.findViewById(R.id.ibDeleteTask);
+        ibCompleteTask = view.findViewById(R.id.ibCompleteTask);
 
         managerPresenter = new ManagerPresenterImpl(this);
 
@@ -67,7 +72,7 @@ public class DialogTaskEdit extends DialogFragment implements ManagerActivityVie
             }
         });
 
-        txtDeleteTaskEdit.setOnClickListener(new View.OnClickListener() {
+        ibDeleteTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 managerPresenter.deleteTask(v.getContext(),String.valueOf(id));
@@ -75,6 +80,17 @@ public class DialogTaskEdit extends DialogFragment implements ManagerActivityVie
                 getDialog().dismiss();
             }
         });
+
+        ibCompleteTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                managerPresenter.terminateTask(v.getContext(),String.valueOf(id));
+                mOnEditListener.sendEditTask();
+                getDialog().dismiss();
+            }
+        });
+
+
 
         txtEditTaskEdit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,7 +1,6 @@
 package com.appgrouplab.taskmanager.SelectList.view;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +22,6 @@ public class AdapterSelectorList extends RecyclerView.Adapter<AdapterSelectorLis
     public AdapterSelectorList(Context context){
         this.context = context;
         mDataSet = new ArrayList<>();
-    }
-
-    public void setDataset(ArrayList<ListData> dataset){
-        mDataSet = dataset;
-        notifyItemRangeRemoved(0,mDataSet.size());
     }
 
     @Override
@@ -54,11 +48,6 @@ public class AdapterSelectorList extends RecyclerView.Adapter<AdapterSelectorLis
     }
 
 
-    public void limpiar(){
-        notifyItemRangeRemoved(0,mDataSet.size());
-        mDataSet.clear();
-    }
-
     @Override
     public int getItemCount() {
         return mDataSet.size();
@@ -69,6 +58,16 @@ public class AdapterSelectorList extends RecyclerView.Adapter<AdapterSelectorLis
         if(listener!=null){
             listener.onClick(v);
         }
+    }
+
+    public void setDataset(ArrayList<ListData> dataset){
+        mDataSet = dataset;
+        notifyItemRangeRemoved(0,mDataSet.size());
+    }
+
+    public void limpiar(){
+        notifyItemRangeRemoved(0,mDataSet.size());
+        mDataSet.clear();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder  {

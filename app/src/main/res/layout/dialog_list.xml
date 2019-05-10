@@ -37,7 +37,7 @@
             android:id="@+id/txtCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CANCELAR"
+            android:text="@string/cancel"
             style="@style/TextButtonDialog"/>
 
 
@@ -45,7 +45,7 @@
             android:id="@+id/txtSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GUARDAR"
+            android:text="@string/save"
             style="@style/TextButtonDialog"/>
 
 

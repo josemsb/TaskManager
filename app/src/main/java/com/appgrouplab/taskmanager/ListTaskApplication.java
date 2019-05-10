@@ -2,7 +2,6 @@ package com.appgrouplab.taskmanager;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.appgrouplab.taskmanager.Repository.SQLiteHelper;
 

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.util.Log;
 
 import com.appgrouplab.taskmanager.ListTaskApplication;
 import com.appgrouplab.taskmanager.Repository.Data.TaskData;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 public class Task implements  TaskInterface {
 
     private ArrayList<TaskData> tasks = new ArrayList<>();
-
+    private ArrayList<TaskData> tasksTerminate = new ArrayList<>();
     public Task(){}
 
 
@@ -59,14 +58,34 @@ public class Task implements  TaskInterface {
     }
 
     @Override
-    public ArrayList<TaskData> getList(Context context, String idList) {
-        SQLiteDatabase db = ((ListTaskApplication) context.getApplicationContext()).getSqLiteOpenHelper().getWritableDatabase();
+    public int countTerminate(Context context, String idList) {
+        SQLiteDatabase db = ((ListTaskApplication) context.getApplicationContext()).getSqLiteOpenHelper().getReadableDatabase();
 
+        Cursor recordSet = db.rawQuery("select count(id) from task where state=0 and idList=?",new String[]{idList});
+        recordSet.moveToNext();
+        int rows = recordSet.getInt(0);
+        db.close();
+
+        return rows;
+    }
+
+    @Override
+    public ArrayList<TaskData> getList(Context context, String idList, String order) {
+        SQLiteDatabase db = ((ListTaskApplication) context.getApplicationContext()).getSqLiteOpenHelper().getWritableDatabase();
+        String sql="";
 
         try{
-            Cursor recordSet = db.rawQuery("select id,idlist,title,description,dateCreate,dateReminder,orderNumber,hourRemider,state from task where state=1 and idList=?",new String[]{idList});
+
+            if(order.equals("natural"))
+                sql =   "select id,idlist,title,description,dateCreate,dateReminder,orderNumber,hourRemider,state from task where state=1 and idList=?";
+            else
+                sql =   "select id,idlist,title,description,dateCreate,dateReminder,orderNumber,hourRemider,state from task where state=1 and idList=? order by date(dateReminder) DESC";
+
+            Cursor recordSet = db.rawQuery(sql,new String[]{idList});
+
+
             recordSet.moveToFirst();
-            Log.d("Trace_View",recordSet.getString(0));
+            tasks.clear();
             do
             {
                 TaskData taskData = new TaskData();
@@ -93,6 +112,42 @@ public class Task implements  TaskInterface {
         }
     }
 
+    @Override
+    public ArrayList<TaskData> getListTerminate(Context context, String idList) {
+        SQLiteDatabase db = ((ListTaskApplication) context.getApplicationContext()).getSqLiteOpenHelper().getWritableDatabase();
+
+
+        try{
+            Cursor recordSet = db.rawQuery("select id,idlist,title,description,dateCreate,dateReminder,orderNumber,hourRemider,state from task where state=0 and idList=?",new String[]{idList});
+            recordSet.moveToFirst();
+            tasksTerminate.clear();
+            do
+            {
+                TaskData taskData = new TaskData();
+                taskData.setId(recordSet.getInt(0));
+                taskData.setIdList(recordSet.getInt(1));
+                taskData.setTitle(recordSet.getString(2));
+                taskData.setDescription(recordSet.getString(3));
+                taskData.setDateCreate(recordSet.getString(4));
+                taskData.setDateReminder(recordSet.getString(5));
+                taskData.setOrderNumber(recordSet.getInt(6));
+                taskData.setHourRemider(recordSet.getString(7));
+                taskData.setState(recordSet.getInt(8));
+
+
+                tasksTerminate.add(taskData);
+            }while(recordSet.moveToNext());
+
+            recordSet.close();
+            db.close();
+            return tasksTerminate;
+
+        }
+        catch (SQLiteException e) {
+            db.close();
+            throw new Error(e.getMessage());
+        }
+    }
 
 
     @Override

@@ -31,8 +31,6 @@ public class List implements ListInterface {
             db.insert("list",null,addContent);
             db.close();
 
-           //managerInteractor.Succes();
-
         }
         catch (SQLiteException e) {
             db.close();
@@ -62,7 +60,7 @@ public class List implements ListInterface {
         try{
             Cursor recordSet = db.rawQuery("select id,title,state from list",null);
             recordSet.moveToFirst();
-            Log.d("Trace_View",recordSet.getString(0));
+           Log.d("Trace_View","get");
             do
             {
                 ListData listData = new ListData();

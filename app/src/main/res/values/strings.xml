@@ -12,4 +12,7 @@
     <string name="addList">Registra una lista</string>
     <string name="save">GUARDAR</string>
     <string name="registerTask">Registra una tarea</string>
+    <string name="createAlarm">Crea tu alarma</string>
+    <string name="agendTask">Agenda tarea</string>
+    <string name="addListS">Agrega una lista</string>
 </resources>

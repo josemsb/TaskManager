@@ -2,6 +2,7 @@ package com.appgrouplab.taskmanager.Manager.view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,10 @@ import android.widget.TextView;
 
 import com.appgrouplab.taskmanager.R;
 import com.appgrouplab.taskmanager.Repository.Data.TaskData;
-import com.appgrouplab.taskmanager.SelectList.view.AdapterSelectorList;
 
 import java.util.ArrayList;
 
-public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ViewHolder> implements View.OnClickListener  {
+public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ViewHolder> implements View.OnClickListener {
     private ArrayList<TaskData> mDataSet;
     private View.OnClickListener listener;
     private Context context;
@@ -45,6 +45,14 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ViewHolder> 
     }
 
     @Override
+    public void onClick(View v) {
+        if(listener!=null){
+            listener.onClick(v);
+        }
+    }
+
+
+    @Override
     public void onBindViewHolder(AdapterTasks.ViewHolder holder, int position) {
         TaskData taskData = mDataSet.get(position);
 
@@ -53,17 +61,29 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ViewHolder> 
 
         if(taskData.getDescription().equals(""))
             holder.txtTaskDescription.setVisibility(View.GONE);
-        else
+        else {
+            holder.txtTaskDescription.setVisibility(View.GONE);
             holder.txtTaskDescription.setText(taskData.getDescription());
-
+        }
         if(taskData.getDateReminder().equals("")) {
             holder.imgDateTaskNew.setVisibility(View.GONE);
             holder.txtDateTaskNew.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.imgDateTaskNew.setVisibility(View.VISIBLE);
+            holder.txtDateTaskNew.setVisibility(View.VISIBLE);
+            holder.txtDateTaskNew.setText(taskData.getDateReminder());
         }
 
         if(taskData.getHourRemider().equals(""))
         {
             holder.imgAlarmTaskNew.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.imgAlarmTaskNew.setVisibility(View.VISIBLE);
+            holder.txtDateTaskNew.setText(taskData.getDateReminder() + " " + taskData.getHourRemider());
         }
 
     }
@@ -78,12 +98,9 @@ public class AdapterTasks extends RecyclerView.Adapter<AdapterTasks.ViewHolder> 
         return mDataSet.size();
     }
 
-    @Override
-    public void onClick(View v) {
-        if(listener!=null){
-            listener.onClick(v);
-        }
-    }
+
+
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder  {
         TextView txtTaskName,txtTaskDescription,txtDateTaskNew;

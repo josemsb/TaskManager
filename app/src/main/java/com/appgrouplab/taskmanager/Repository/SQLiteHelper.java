@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.io.File;
-
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static String DB_NAME = "DBTASK";
@@ -38,15 +36,4 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    private boolean checkDataBase() {
-
-        try {
-            File databasePath = myContext.getDatabasePath(DB_NAME);
-            return databasePath.exists();
-
-
-        } catch (SQLiteException e) {
-            throw new Error(e.getMessage());
-        }
-    }
 }

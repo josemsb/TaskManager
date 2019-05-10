@@ -8,9 +8,12 @@
     android:paddingRight="16dp"
     android:paddingBottom="5dp">
 
-        <RadioButton
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/task"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +24,6 @@
                 android:id="@+id/txtTaskName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tarea 01"
                 android:layout_marginBottom="5dp"
                 style="@style/TextTaskTitle"/>
 
@@ -29,7 +31,6 @@
                 android:id="@+id/txtTaskDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descripción"
                 android:layout_marginBottom="5dp"
                 style="@style/TextTitleDescription"/>
 
@@ -56,10 +57,8 @@
                     android:id="@+id/txtDateTaskNew"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="16 Mayo"
                     android:paddingTop="3dp"
-                    style="@style/TextTitleDialog"
-                    android:textColor="@color/colorPrimary"/>
+                    style="@style/TextDateDialog"/>
 
             </LinearLayout>
 

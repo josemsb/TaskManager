@@ -7,7 +7,7 @@ import com.appgrouplab.taskmanager.Repository.Data.ListData;
 import java.util.ArrayList;
 
 public interface SelectListInteractor {
-    ArrayList<ListData>  getList( Context context);
-    void addList(String title,Integer state, Context context);
 
+    void addList(String title,Integer state, Context context);
+    ArrayList<ListData>  getList( Context context);
 }
