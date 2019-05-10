@@ -85,9 +85,8 @@ public class DialogTaskNew extends DialogFragment implements ManagerActivityView
                 if(!etTitleTask.getText().toString().equals("")) {
                     Date cDate = new Date();
                     String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
-                    if(txtSelectDate.getText().equals("Agenda tarea")) {
+                    if(txtSelectDate.getText().equals("Agenda tarea"))
                         managerPresenter.addTask(idList, etTitleTask.getText().toString(), etDescriptionTask.getText().toString(), fDate, "", 0, "", 1, v.getContext());
-                    }
                     else
                     {
                         if(!txtSelectAlarm.getText().equals("Crea tu alarma")) {

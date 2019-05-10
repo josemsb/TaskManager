@@ -1,5 +1,6 @@
 package com.appgrouplab.taskmanager.Alarm;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -24,6 +26,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+
         Bundle b = intent.getExtras();
 
         Intent notificationIntent = new Intent(context, ManagerActivity.class);
@@ -34,7 +37,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         long[] pattern = new long[]{2000,1000,2000};
 
-
+Log.d("AlarmReceiver",b.get("title").toString());
 
         NotificationCompat.Builder note = new NotificationCompat.Builder(context,"CANAL_TASKMANAGER")
                 .setSmallIcon(R.drawable.calendar)
@@ -48,6 +51,12 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Random random = new Random();
         NotificationManager notificationManager = (NotificationManager) context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel("CANAL_TASKMANAGER", "canal", NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
         notificationManager.notify(random.nextInt(),note.build());
     }
 

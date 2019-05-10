@@ -230,9 +230,9 @@ public class Task implements  TaskInterface {
             ContentValues addContent = new ContentValues();
             addContent.put("title",title);
             addContent.put("description",description);
-            //addContent.put("dateReminder",dateRemider);
+            addContent.put("dateReminder",dateRemider);
             //addContent.put("orderNumber",orderNumber);
-            //addContent.put("hourRemider",hourRemider);
+            addContent.put("hourRemider",hourRemider);
             //addContent.put("state",state);
 
             db.update("task",addContent,"id=?",new String[]{id});
