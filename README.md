@@ -12,3 +12,5 @@ hora seleccionada. Tambien se visualiza las tareas temrinadas y ordena por fecha
 - Presenter: Adpatadores
 - Interactor: Reglas
 - Repository: Maneja las entidades y la conexión a la base de datos
+## Pruebas
+> App testeado en Android API 21 y API 26, y esta desarrollado para android API 28
